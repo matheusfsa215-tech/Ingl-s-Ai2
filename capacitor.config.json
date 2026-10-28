@@ -1,0 +1,23 @@
+{
+  "appId": "com.fluentia.app",
+  "appName": "Fluentia",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "android": {
+    "allowMixedContent": false,
+    "backgroundColor": "#103E33",
+    "webContentsDebuggingEnabled": false
+  },
+  "server": {
+    "androidScheme": "https",
+    "url": "https://SUBSTITUI-PELO-TEU-DOMINIO",
+    "cleartext": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "backgroundColor": "#103E33",
+      "showSpinner": false,
+      "launchAutoHide": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+appId: com.fluentia.app
+productName: Fluentia
+directories:
+  output: dist-desktop
+  buildResources: public/icons
+files:
+  - electron/**/*
+  - public/icons/**/*
+  - package.json
+icon: public/icons/icon-512.png
+extraMetadata:
+  main: electron/main.cjs
+win:
+  target:
+    - nsis
+  icon: public/icons/icon-512.png
+mac:
+  target:
+    - dmg
+  category: public.app-category.education
+  icon: public/icons/icon-512.png
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Education
+  icon: public/icons/icon-512.png
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
