@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+
+  --color-paper: #f6f2e9;
+  --color-paper-deep: #efe8da;
+  --color-ink: #16211c;
+  --color-ink-soft: #4f5f57;
+  --color-forest: #103e33;
+  --color-forest-deep: #08251f;
+  --color-moss: #1c6b54;
+  --color-lime: #d8f07e;
+  --color-coral: #d9553a;
+  --color-sand: #e3dac8;
+  --color-card: #fffdf8;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(1200px 600px at 100% -10%, rgba(28, 107, 84, 0.13), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(217, 85, 58, 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-forest-deep);
+  }
+
+  @media (display-mode: standalone) {
+    body {
+      overscroll-behavior-y: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moss);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--color-card);
+    border: 1px solid color-mix(in srgb, var(--color-sand) 80%, transparent);
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 0 rgba(22, 33, 28, 0.03), 0 18px 40px -30px rgba(8, 37, 31, 0.4);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    background-color: var(--color-forest);
+    color: #f8f6ee;
+    padding: 0.7rem 1.35rem;
+    font-weight: 600;
+    font-size: 0.925rem;
+    transition: transform 150ms ease, background-color 150ms ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-forest-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.55;
+    transform: none;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-sand);
+    background-color: transparent;
+    padding: 0.55rem 1rem;
+    font-weight: 550;
+    font-size: 0.875rem;
+    color: var(--color-ink);
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-paper-deep);
+    border-color: color-mix(in srgb, var(--color-moss) 45%, var(--color-sand));
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-sand);
+    padding: 0.22rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 0.9rem;
+    border: 1px solid var(--color-sand);
+    background-color: #fffefb;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.925rem;
+    color: var(--color-ink);
+  }
+
+  .field:focus {
+    border-color: var(--color-moss);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(28, 107, 84, 0.12);
+  }
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+.animate-rise {
+  animation: riseIn 320ms ease both;
+}
+
+.animate-recording {
+  animation: softPulse 1.3s ease-in-out infinite;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.hide-scrollbar::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-sand) 70%, transparent);
+  border-radius: 999px;
+}
