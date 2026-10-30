@@ -102,7 +102,7 @@ export default async function DashboardPage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <span aria-hidden>🎙</span>
-                {dict.coach.mastered}: 85+
+                {dict.coach.mastered.replace(/[¡!]/g, "")} ≥ 85
               </span>
               <span className="flex items-center gap-1.5">
                 <span aria-hidden>🔥</span>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AccessHelp from "@/components/AccessHelp";
 import BrowserDiagnostics from "@/components/BrowserDiagnostics";
 import { runServerChecks, summarize, type Check } from "@/lib/diagnostics";
 import { getOrCreateProfile } from "@/lib/repo";
@@ -98,6 +99,8 @@ export default async function DiagnosticsPage() {
           </div>
         </div>
       </section>
+
+      <AccessHelp productionUrl={process.env.VERCEL_PROJECT_PRODUCTION_URL ?? null} />
 
       <BrowserDiagnostics voice={profile?.voice ?? "en-GB"} />
 

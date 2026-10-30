@@ -133,6 +133,30 @@ git push -u origin main
 
 **Regra de ouro:** se mudares uma variável depois → **Deployments → ⋯ → Redeploy**.
 
+## 4.1 Tornar o site PÚBLICO (se a Vercel pedir o teu email noutro telefone)
+
+Sintoma: ao abrir o link de outro telemóvel/servidor aparece o ecrã de login da Vercel.
+Isso é a **Deployment Protection**, não a app.
+
+1. **Usa o link certo**: `https://fluentia-xxxx.vercel.app` (ou o teu domínio). Se tiver `-git-` ou um
+   código no meio (ex.: `fluentia-3f9a1c-…vercel.app`) é **Preview**, protegido por omissão.
+   Em **Deployments**, o de cima com etiqueta **Production** é o público; vê também **Settings → Domains**.
+2. **Vercel → projeto → Settings → Deployment Protection**:
+   - *Vercel Authentication*: mudar de **All Deployments** para **Standard Protection** (protege só
+     Preview) ou **Disabled**;
+   - confirmar que *Password Protection* está **off**;
+   - **Save**.
+3. Se o projeto pertence a uma **equipa**: **Team Settings → Deployment Protection** (sobrepõe-se ao projeto).
+4. Testa em **janela privada** e noutro telefone: deve abrir o painel sem pedir email.
+5. Se quiseres manter a proteção e ainda assim partilhar Preview:
+   *Deployment Protection → Protection Bypass for Automation* → gera o segredo e usa
+   `?x-vercel-protection-bypass=SEGREDO&x-vercel-set-bypass-cookie=true`.
+6. Recomendado: **Settings → Domains** → adicionar domínio próprio (fica público e com HTTPS, preciso
+   para instalar a app e usar o microfone).
+
+Ajuda dentro da app: **`/diagnostico` → cartão “A Vercel pede o meu email”** (detecta se estás num link
+de Preview e tem botão *Copiar passos*).
+
 ---
 
 # PARTE 5 — Confirmar no computador (3 min)

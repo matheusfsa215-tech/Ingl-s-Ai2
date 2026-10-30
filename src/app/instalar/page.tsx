@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AccessHelp from "@/components/AccessHelp";
 import AudioCheck from "@/components/AudioCheck";
 import CopyBlock from "@/components/CopyBlock";
 import InstallPanel from "@/components/InstallPanel";
@@ -98,6 +99,8 @@ export default async function InstallPage() {
       <InstallPanel dict={dict} />
 
       <AudioCheck dict={dict} voice={profile?.voice ?? "en-GB"} />
+
+      <AccessHelp productionUrl={process.env.VERCEL_PROJECT_PRODUCTION_URL ?? null} />
 
       <section className="grid gap-3 lg:grid-cols-3">
         {cards.map((card) => (
